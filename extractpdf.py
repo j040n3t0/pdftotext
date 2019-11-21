@@ -17,15 +17,18 @@ time.sleep(1)
  
 # Carregando arquivo PDF
 print("[*] Importando biblioteca de conversão...")
-with open("Docker-Cheat-Sheet.pdf", "rb") as file:
-    pdf = pdftotext.PDF(file)
-print("[*] Sucesso!\n")
-time.sleep(1)
+try:
+    with open(sys.argv[1], "rb") as file:
+        pdf = pdftotext.PDF(file)
+    print("[*] Sucesso!\n")
+    time.sleep(1)
 
-# Salvando o texto extraido em um arquivo TXT.
-print("[*] Salvando o texto extraido...")
-with open('output.txt', 'w') as file:
-    file.write("\n\n".join(pdf))
-time.sleep(2)
-print("[*] Sucesso!")
-print("[*] Conversão executada com sucesso... Até a próxima!\n")
+    # Salvando o texto extraido em um arquivo TXT.
+    print("[*] Salvando o texto extraido...")
+    with open('output.txt', 'w') as file:
+        file.write("\n\n".join(pdf))
+    time.sleep(2)
+    print("[*] Sucesso!")
+    print("[*] Conversão executada com sucesso... Até a próxima!\n")
+except:
+    print("\n\n[ERROR] Informe o nome do arquivo!")
